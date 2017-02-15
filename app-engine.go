@@ -1,0 +1,19 @@
+// +build appengine
+
+package main
+
+import (
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/engine/standard"
+	"net/http"
+)
+
+func createMux() *echo.Echo {
+    e := echo.New()
+
+    s := standard.New("")
+    s.SetHandler(e)
+    http.Handle("/", s)
+
+    return e
+}
